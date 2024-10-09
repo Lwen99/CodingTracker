@@ -1,0 +1,15 @@
+﻿@using CodingTracker.Models.DomainModels
+@model ProjectSession
+<div class="d-flex justify-content-center mt-5">
+    <div class="card text-center" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Coding Session Details</h5>
+            <p class="card-text">
+                <strong>Duration:</strong> @Model.Duration<br />
+                <strong>Name:</strong> @Model.Name<br />
+                <strong>Description:</strong> @Model.Description<br />
+                <strong>Date:</strong> @Model.CreatedDate.ToString("MM/dd/yyyy")
+            </p>
+        </div>
+    </div>
+</div>

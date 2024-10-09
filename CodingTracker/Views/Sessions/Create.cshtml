@@ -1,0 +1,39 @@
+﻿@using CodingTracker.Models.ViewModels
+@model SessionTypesViewModel
+
+<div>
+    <h1>
+        Create Session Form
+    </h1>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Select a Session</label>
+    <select id="sessionSelect" class="form-select" asp-items="Model.SelectSessionTypesList"></select>
+</div>
+ 
+<div id="partialView">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+  
+
+        $('#sessionSelect').change(function () {
+            var selectedValue = $(this).val();
+            if (selectedValue) { // Only perform action if a valid option is selected
+                $.ajax({
+                    url: '@Url.Action("LoadSessionPartial")', // controller action to load the partial view
+                    type: 'GET',
+                    data: { sessionId: selectedValue },
+                    success: function (result) {
+                        $('#partialView').html(result); // Render partial view content
+                    }
+                });
+            } else {
+                $('#partialView').empty(); // Clear the partial view if no session is selected
+            }
+        });
+    });
+</script>

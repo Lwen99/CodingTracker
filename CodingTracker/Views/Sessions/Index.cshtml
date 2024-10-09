@@ -1,0 +1,79 @@
+﻿@using CodingTracker.Models.DomainModels
+@using CodingTracker.Models.ViewModels
+@model SessionDisplaysViewModel
+<div>
+    <h1 class="text-primary">Sessions</h1>
+</div>
+<div class="mt-3 mb-3">
+    
+    <a asp-action="Create" class="btn btn-primary rounded" >Create</a>
+</div>
+<div class="container">
+    <div class="row">
+        Coding Sessions
+
+        <div class="col-12 rectangle">
+            @foreach(CodingSession session in Model.CodingSessions)
+            {
+                <a asp-controller="CodingSession" asp-action="Index" asp-route-id="@session.Id" class="no-underline">
+                    <div class="session-card">
+                        @session.Description
+                    </div>
+                </a>
+               
+
+            }
+        </div>
+    </div>
+    <div class="row">
+        Review Sessions
+
+        <div class="col-12 rectangle">
+            @foreach(ReviewSession session in Model.ReviewSessions)
+            {
+                <a asp-controller="ReviewSession" asp-action="Index" asp-route-id="@session.Id" class="no-underline">
+                    <div class="session-card">
+                        @session.Description
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+    <div class="row">
+        Project Sessions
+        <div class="col-12 rectangle">
+            @foreach(ProjectSession session in Model.ProjectSessions)
+            {
+                <a asp-controller="ProjectSession" asp-action="Index" asp-route-id="@session.Id" class="">
+                    <div class="session-card">
+                        @session.Description
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+   
+</div>
+
+<style>
+    .no-underline{
+        text-decoration:none;
+    }
+    .rectangle {
+        height: 150px;
+        margin-bottom: 20px;
+        border: 2px solid black;
+    }
+
+    .session-card {
+        border: 2px solid #007BFF;
+        background-color: #f8f9fa; 
+        padding: 10px;
+        margin-top:20px;
+        margin-right:10px;
+        margin-bottom: 10px; 
+        display: inline-block; 
+    }
+</style>
+
+
